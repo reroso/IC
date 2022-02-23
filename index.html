@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html, body {
+  height: 100%;
+}
+.flex-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: dodgerblue;
+  flex-direction: column;
+  align-items: center;
+}
+.div_cabecalho {
+    display: flex;
+    background-color: #6c7586;
+    width: 100%;
+    height: 10%;
+    border-style: solid;
+    border-width: 3px;
+    flex-direction: row;
+}
+.cabecalho_1{
+    font-weight: bold;
+    width: 40%;
+    height: 100%;
+}
+.cabecalho_2{
+    width: 30%;
+    height: 100%;
+}
+.cabecalho_3{
+    width: 18%;
+    height: 100%;
+}
+.cabecalho_4{
+    display: flex;
+    width: 12%;
+    height: 100%;
+    flex-direction: column;
+}
+.cabecalho_4_1{
+    width: 100%;
+    height: 50%;
+}
+.cabecalho_4_2{
+    width: 100%;
+    height: 50%;
+}
+.div_titulos {
+    display: flex;
+    background-color: #e1e0e0;
+    width: 100%;
+    height: 4%;
+    border-style: none solid solid solid;
+    border-width: 3px;
+    flex-direction: row;
+}
+.titulo_1{
+    width: 30%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titulo_3{
+    width: 30%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titulo_5{
+    width: 30%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.seta-direita:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 0; 
+  height: 0; 
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 12px solid black;
+  
+}
+.div_conteudo {
+    display: flex;
+    width: 100%;
+    height: 86%;
+    flex-direction: row;
+    border-style: none solid solid solid;
+    border-width: 3px;
+}
+.entrada{
+    display: flex;
+    background-color: #a3a5a3;
+    width: 33.34%;
+    flex-direction: column;
+}
+.entradas_principais {
+    display: flex;
+    height: 50%;
+    flex-direction: row;
+}
+.entrada_fornecedor{
+    background-color: #e1e0e0;
+    width: 50%;
+    border-style: none groove solid none;
+    border-width: 0px 2px 3px 0px;
+    overflow: auto;
+}
+.entrada_insumo{
+    background-color: #e1e0e0;
+    width: 50%;
+    border-style: none groove solid none;
+    border-width: 0px 2px 3px 0px;
+    overflow: auto;
+}
+.entrada_rh{
+    background-color: #e1e0e0;
+    height: 25%;
+    border-style: none solid groove none;
+    border-width: 0px 3px 2px 0px;
+    overflow: auto;
+}
+.entrada_rt{
+    background-color: #e1e0e0;
+    height: 25%;
+    overflow: auto;
+}
+.processamento {
+    display: flex;
+    background-color: #a3a5a3;
+    width: 33.33%;
+    flex-direction: column;
+}
+.processamento_Atividade{
+    background-color: #e1e0e0;
+    height: 75%;
+    border-style: none none solid none;
+    border-width: 0px 0px 3px 0px;
+    overflow: auto;
+}
+.processamento_finalidade{
+    background-color: #e1e0e0;
+    height: 25%;
+    border-style: none groove none groove;
+    border-width: 0px 2px 0px 2px;
+    overflow: auto;
+}
+.saida {
+    display: flex;
+    background-color: #a3a5a3;
+    width: 33.33%;
+    flex-direction: column;
+}
+.saidas_principais{
+    display: flex;
+    height: 50%;
+    flex-direction: row;
+}
+.saida_produto{
+    background-color: #e1e0e0;
+    width: 50%;
+    border-style: none groove solid groove;
+    border-width: 0px 2px 3px 2px;
+    overflow: auto;
+}
+.saida_cliente{
+    background-color: #e1e0e0;
+    width: 50%;
+    border-style: none none solid none;
+    border-width: 0px 0px 3px 0px;
+    overflow: auto;
+}
+.saida_performance{
+    background-color: #e1e0e0;
+    height: 25%;
+    border-style: none none groove solid;
+    border-width: 0px 0px 2px 3px;
+    overflow: auto;
+}
+.saida_controle{
+    background-color: #e1e0e0;
+    height: 25%;
+    overflow: auto;
+}
+#dropzoneFornecedores{
+      padding: 16px;
+      height: 66%;
+      width: 72%;
+      margin: 0;
+}
+#dropzoneInsumos{
+      padding: 16px;
+      height: 66%;
+      width: 72%;
+      margin: 0;
+}
+#dropzoneHumanos{
+      padding: 16px;
+      height: 44%;
+      width: 86%;
+      margin: 0;
+}
+#dropzoneTecnologicos{
+      padding: 16px;
+      height: 44%;
+      width: 86%;
+      margin: 0;
+}
+#dropzoneAtividades{
+      padding: 16px;
+      height: 81.1%;
+      width: 86%;
+      margin: 0;
+}
+#dropzoneFinalidades{
+      padding: 16px;
+      height: 44%;
+      width: 86%;
+      margin: 0;
+}
+#dropzoneProdutos{
+      padding: 16px;
+      height: 66%;
+      width: 72%;
+      margin: 0;
+}
+#dropzoneClientes{
+      padding: 16px;
+      height: 72%;
+      width: 72%;
+      margin: 0;
+}
+#dropzonePerformances{
+      padding: 16px;
+      height: 44%;
+      width: 86%;
+      margin: 0;
+}
+#dropzoneControles{
+      padding: 16px;
+      height: 44%;
+      width: 86%;
+      margin: 0;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
+#card{
+    padding: 16px;
+    box-shadow: 0 2px 2px -1px;
+    width: 210px;
+    min-height: 10px;
+    margin: 25px 0;
+    border-radius: 10px;
+    font-weight: 200;
+    font-size: 10px;
+}
+.cardFornecedoresColor{
+    background-color: #5b778c;
+}
+.cardInsumosColor{
+    background-color: #5b778c;
+}
+.cardHumanosColor{
+    background-color: #205895;
+}
+.cardTecnologicosColor{
+    background-color: #5c6375;
+}
+.cardAtividadesColor{
+    background-color: #a08665;
+}
+.cardFinalidadesColor{
+    background-color: #8d5d3e;
+}
+.cardProdutosColor{
+    background-color: #5c7e77;
+}
+.cardClientesColor{
+    background-color: #5c7e77;
+}
+.cardPerformancesColor{
+    background-color: #305e41;
+}
+.cardControlesColor{
+    background-color: #437189;
+}
+.mainContent{
+    float:left;
+}
+.hidden{
+    display: none;
+}
+textarea{
+    width: 100%; 
+    height: 40px;
+    background: transparent;
+    font-size: 15px;
+    border: none;
+    overflow: auto;
+    resize: none;
+    margin: 0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="flex-container">
+    <div class="div_cabecalho">  
+        <div class="cabecalho_1">PROCESS MAP MODEL CANVAS</div>
+        <div class="cabecalho_2"><input type="text" name="" id=""></div>
+        <div class="cabecalho_3"><input type="text" name="" id=""></div>
+        <div class="cabecalho_4">
+            <div class="cabecalho_4_1"><input type="text" name="" id=""></div>
+            <div class="cabecalho_4_2"><input type="text" name="" id=""></div>
+        </div>
+    </div>
+    <div class="div_titulos">
+        <div class="titulo_1">ENTRADAS</div>
+        <div class="titulo_2">
+            <div class="seta-direita"></div>
+        </div>
+        <div class="titulo_3">PROCESSAMENTO</div>
+        <div class="titulo_4">
+            <div class="seta-direita"></div>
+        </div>
+        <div class="titulo_5">SAÍDAS</div>
+    </div>
+    <div class="div_conteudo">
+        <div class="entrada">
+            <div class="entradas_principais">
+                <div class="entrada_fornecedor">
+                    <p>Principais Fornecedores</p>
+                    <div id="mainContent">
+                        <button id="clickButtonFornecedores" class="buttonStyle">+</button>
+                    </div>
+                    <div id="dropzoneFornecedores" class="dropzone" data-dropnome="fornecedores">
+                        <div id="card" class="cardFornecedoresColor"></div>
+                    </div>
+                </div>
+                <div class="entrada_insumo">
+                    <p>Principais Insumos</p>
+                    <div id="mainContent">
+                        <button id="clickButtonInsumos" class="buttonStyle">+</button>
+                    </div>
+                    <div id="dropzoneInsumos" class="dropzone" data-dropnome="insumos">
+                        <div id="card" class="cardInsumosColor"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="entrada_rh">
+                <p>Recursos Humanos</p>
+                <div id="mainContent">
+                    <button id="clickButtonHumanos" class="buttonStyle">+</button>
+                </div>
+                <div id="dropzoneHumanos" class="dropzone" data-dropnome="humanos">
+                    <div id="card" class="cardHumanosColor"></div>
+                </div>
+            </div>
+            <div class="entrada_rt">
+                <p>Recursos Tecnológicos</p>
+                <div id="mainContent">
+                    <button id="clickButtonTecnologicos" class="buttonStyle">+</button>
+                </div>
+                <div id="dropzoneTecnologicos" class="dropzone" data-dropnome="tecnologicos">
+                    <div id="card" class="cardTecnologicosColor"></div>
+                </div>
+            </div>    
+        </div>
+        <div class="processamento">
+            <div class="processamento_Atividade">
+                <p>Principais Atividades</p>
+                <div id="mainContent">
+                    <button id="clickButtonAtividades" class="buttonStyle">+</button>
+                </div>
+                <div id="dropzoneAtividades" class="dropzone" data-dropnome="atividades">
+                    <div id="card" class="cardAtividadesColor"></div>
+                </div>
+            </div>
+            <div class="processamento_finalidade">
+                <p>Finalidade e Melhorias</p>
+                <div id="mainContent">
+                    <button id="clickButtonFinalidades" class="buttonStyle">+</button>
+                </div>
+                <div id="dropzoneFinalidades" class="dropzone" data-dropnome="finalidades">
+                    <div id="card" class="cardFinalidadesColor"></div>
+                </div>
+            </div>
+        </div>
+        <div class="saida">
+            <div class="saidas_principais">
+                <div class="saida_produto">
+                    <p>Principais Produtos</p>
+                    <div id="mainContent">
+                        <button id="clickButtonProdutos" class="buttonStyle">+</button>
+                    </div>
+                    <div id="dropzoneProdutos" class="dropzone" data-dropnome="produtos">
+                        <div id="card" class="cardProdutosColor"></div>
+                    </div>
+                </div>
+                <div class="saida_cliente">
+                    <p>Principais Clientes</p>
+                    <div id="mainContent">
+                        <button id="clickButtonClientes" class="buttonStyle">+</button>
+                    </div>
+                    <div id="dropzoneClientes" class="dropzone" data-dropnome="clientes">
+                        <div id="card" class="cardClientesColor"></div>
+                    </div>
+                </div>
+            </div> 
+            <div class="saida_performance">
+                <p>Indicadores de Performance</p>
+                <div id="mainContent">
+                    <button id="clickButtonPerformances" class="buttonStyle">+</button>
+                </div>
+                <div id="dropzonePerformances" class="dropzone" data-dropnome="performances">
+                    <div id="card" class="cardPerformancesColor"></div>
+                </div>
+            </div>
+            <div class="saida_controle">
+                <p>Indicadores de Controle</p>
+                <div id="mainContent">
+                    <button id="clickButtonControles" class="buttonStyle">+</button>
+                </div>
+                <div id="dropzoneControles" class="dropzone" data-dropnome="controles">
+                    <div id="card" class="cardControlesColor"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-fornecedor-novo">
+    <div id ="card" class="card cardFornecedoresColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_fornecedor" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-insumo-novo">
+    <div id ="card" class="card cardInsumosColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_insumo" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-humano-novo">
+    <div id ="card" class="card cardHumanosColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_humano" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-tecnologico-novo">
+    <div id ="card" class="card cardTecnologicosColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_tecnologico" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-atividade-novo">
+    <div id ="card" class="card cardAtividadesColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_atividade" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-finalidade-novo">
+    <div id ="card" class="card cardFinalidadesColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_finalidade" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-produto-novo">
+    <div id ="card" class="card cardProdutosColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_produto" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-cliente-novo">
+    <div id ="card" class="card cardClientesColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_cliente" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-performance-novo">
+    <div id ="card" class="card cardPerformancesColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_performance" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<div class ="hidden" id="template-card-controle-novo">
+    <div id ="card" class="card cardControlesColor" draggable="true">
+        <div class="content">
+        <fieldset>
+            <form action="/main_screen/incluir_controle" method="post" class="formulario">
+            <div>
+                <textarea type="text"  name="descricao" style="background-color:transparent; border: none;"></textarea>
+            </div>           
+            </form>
+        </fieldset>
+        </div>
+    </div>
+</div>
+
+<script>  
+    clickButtonFornecedores.addEventListener('click', addFornecedores, false);
+
+        function addFornecedores(e) {
+
+        var temp = document.getElementById('template-card-fornecedor-novo');
+        var tempClone = temp.cloneNode(true);
+        tempClone.classList.remove('hidden');
+        var tempDestiny = document.getElementById('dropzoneFornecedores');
+        tempDestiny.appendChild(tempClone);      
+        }
+    clickButtonInsumos.addEventListener('click', addInsumos, false);
+        
+        function addInsumos(e) {
+
+        var temp = document.getElementById('template-card-insumo-novo');
+        var tempClone = temp.cloneNode(true);
+        tempClone.classList.remove('hidden');
+        var tempDestiny = document.getElementById('dropzoneInsumos');
+        tempDestiny.appendChild(tempClone);      
+        }
+    clickButtonHumanos.addEventListener('click', addHumanos, false);
+        
+        function addHumanos(e) {
+ 
+        var temp = document.getElementById('template-card-humano-novo');
+        var tempClone = temp.cloneNode(true);
+        tempClone.classList.remove('hidden');
+        var tempDestiny = document.getElementById('dropzoneHumanos');
+        tempDestiny.appendChild(tempClone);      
+        }
+    clickButtonTecnologicos.addEventListener('click', addTecnologicos, false);
+        
+        function addTecnologicos(e) {
+ 
+        var temp = document.getElementById('template-card-tecnologico-novo');
+        var tempClone = temp.cloneNode(true);
+        tempClone.classList.remove('hidden');
+        var tempDestiny = document.getElementById('dropzoneTecnologicos');
+        tempDestiny.appendChild(tempClone);      
+        }
+    clickButtonAtividades.addEventListener('click', addAtividades, false);
+        
+        function addAtividades(e) {
+ 
+        var temp = document.getElementById('template-card-atividade-novo');
+        var tempClone = temp.cloneNode(true);
+        tempClone.classList.remove('hidden');
+        var tempDestiny = document.getElementById('dropzoneAtividades');
+        tempDestiny.appendChild(tempClone);      
+        }
+    clickButtonFinalidades.addEventListener('click', addFinalidades, false);
+        
+        function addFinalidades(e) {
+ 
+        var temp = document.getElementById('template-card-finalidade-novo');
+        var tempClone = temp.cloneNode(true);
+        tempClone.classList.remove('hidden');
+        var tempDestiny = document.getElementById('dropzoneFinalidades');
+        tempDestiny.appendChild(tempClone);      
+        }
+ 
+    clickButtonProdutos.addEventListener('click', addProdutos, false);
+        
+        function addProdutos(e) {
+ 
+        var temp = document.getElementById('template-card-produto-novo');
+        var tempClone = temp.cloneNode(true);
+        tempClone.classList.remove('hidden');
+        var tempDestiny = document.getElementById('dropzoneProdutos');
+        tempDestiny.appendChild(tempClone);      
+        }
+    
+    clickButtonClientes.addEventListener('click', addClientes, false);
+        
+       function addClientes(e) {
+
+       var temp = document.getElementById('template-card-cliente-novo');
+       var tempClone = temp.cloneNode(true);
+       tempClone.classList.remove('hidden');
+       var tempDestiny = document.getElementById('dropzoneClientes');
+       tempDestiny.appendChild(tempClone);      
+       }
+    
+    clickButtonPerformances.addEventListener('click', addPerformances, false);
+        
+       function addPerformances(e) {
+
+       var temp = document.getElementById('template-card-performance-novo');
+       var tempClone = temp.cloneNode(true);
+       tempClone.classList.remove('hidden');
+       var tempDestiny = document.getElementById('dropzonePerformances');
+       tempDestiny.appendChild(tempClone);      
+       }
+
+    clickButtonControles.addEventListener('click', addControles, false);
+        
+        function addControles(e) {
+ 
+        var temp = document.getElementById('template-card-controle-novo');
+        var tempClone = temp.cloneNode(true);
+        tempClone.classList.remove('hidden');
+        var tempDestiny = document.getElementById('dropzoneControles');
+        tempDestiny.appendChild(tempClone);      
+        }
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+        
+
+</script>
+
+</body>
+</html>
